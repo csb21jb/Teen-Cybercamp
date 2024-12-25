@@ -10,6 +10,6 @@ sudo apt update
 sudo apt install docker-ce
 sudo docker run hello-world ## Ensure docker runs
 docker run -d -p 3000:3000 bkimminich/juice-shop
-docker run --rm -d -p 8080:80 vulnerables/web-dvwa
+docker run -it -d -p 8081:80 tleemcjr/metasploitable2 sh -c "/bin/services.sh && bash"
 
 
