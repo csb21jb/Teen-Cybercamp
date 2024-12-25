@@ -11,5 +11,6 @@ sudo apt install docker-ce
 sudo docker run hello-world ## Ensure docker runs
 docker run -d -p 3000:3000 bkimminich/juice-shop
 docker run -it -d -p 8081:80 tleemcjr/metasploitable2 sh -c "/bin/services.sh && bash"
+docker run -d -p 2222:22 --name kali kalilinux/kali-rolling
 
 
