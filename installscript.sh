@@ -21,3 +21,4 @@ sudo docker run hello-world ## Ensure docker runs
 echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
 echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
+echo "Configuration updated successfully in /etc/ssh/ssh_config."
