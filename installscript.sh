@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# Check if the script is run as root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "This script must be run as root. Please use sudo or log in as root."
+    exit 1
+fi
+
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install git
@@ -9,5 +16,8 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt update
 sudo apt install docker-ce
 sudo docker run hello-world ## Ensure docker runs
-docker run -d -p 3000:3000 bkimminich/juice-shop
-docker run -it -d -p 8081:80 tleemcjr/metasploitable2 sh -c "/bin/services.sh && bash"
+
+## update SSH to accept antiquated security
+echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
+echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
+echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
