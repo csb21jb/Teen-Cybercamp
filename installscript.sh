@@ -6,16 +6,17 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install git
+apt update -y
+apt upgrade -y
+apt install git
+apt install nmap
 ## Install Docker
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce
-sudo docker run hello-world ## Ensure docker runs
+apt update
+apt install docker-ce
+docker run hello-world ## Ensure docker runs
 
 ## update SSH to accept antiquated security
 echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
