@@ -11,8 +11,3 @@ sudo apt install docker-ce
 sudo docker run hello-world ## Ensure docker runs
 docker run -d -p 3000:3000 bkimminich/juice-shop
 docker run -it -d -p 8081:80 tleemcjr/metasploitable2 sh -c "/bin/services.sh && bash"
-# Install Kali
-docker run -d -p 2222:22 --name kali kalilinux/kali-rolling ## runs detatched
-docker exec -it kali /bin/bash ## goes into the docker
-apt update
-apt install kali-linux-headless -y
