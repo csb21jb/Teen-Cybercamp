@@ -25,10 +25,12 @@ echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo "Configuration updated successfully in /etc/ssh/ssh_config."
 
+# Install the pdf-parser to /usr/local/bin
+cd /usr/local/bin && wget https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
+
 # Append the PATH modification to /etc/profile
 echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
 source /etc/profile
 echo "Updated PATH: $PATH"
 
-# Install the pdf-parser to /usr/local/bin
-cd /usr/local/bin && wget https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
+
