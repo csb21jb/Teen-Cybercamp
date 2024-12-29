@@ -10,6 +10,7 @@ apt update -y
 apt upgrade -y
 apt install git
 apt install nmap
+apt install pip
 ## Install Docker
 apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -23,3 +24,8 @@ echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
 echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo "Configuration updated successfully in /etc/ssh/ssh_config."
+
+# Append the PATH modification to /etc/profile
+echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
+source /etc/profile
+echo "Updated PATH: $PATH"
