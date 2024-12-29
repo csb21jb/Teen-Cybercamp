@@ -31,4 +31,4 @@ source /etc/profile
 echo "Updated PATH: $PATH"
 
 # Install the pdf-parser to /usr/local/bin
-#cd /usr/local/bin && wget https://raw.githubusercontent.com/DidierStevens/DidierStevensSuite/refs/heads/master/pdf-parser.py
+cd /usr/local/bin && wget https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
