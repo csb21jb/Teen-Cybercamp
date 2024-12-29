@@ -29,3 +29,6 @@ echo "Configuration updated successfully in /etc/ssh/ssh_config."
 echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
 source /etc/profile
 echo "Updated PATH: $PATH"
+
+# Install the pdf-parser to /usr/local/bin
+#cd /usr/local/bin && wget https://raw.githubusercontent.com/DidierStevens/DidierStevensSuite/refs/heads/master/pdf-parser.py
