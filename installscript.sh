@@ -33,4 +33,8 @@ echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
 source /etc/profile
 echo "Updated PATH: $PATH"
 
+#Install Metasploit-Framework
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \
+  ./msfinstall
 
