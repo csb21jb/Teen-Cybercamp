@@ -295,11 +295,44 @@ Dec 29 10:55:17 server sshd[80000]: Failed password for invalid user admin from 
 EOL
 echo -e "\e[33mSimulated log entries added to /var/log/auth.log.\e[0m"
 
-# Final cleanup and checks
+################################### Final cleanup and checks ###################################
 echo -e "\e[33mCleaning up...\e[0m"
 apt autoremove -y && apt autoclean
 sleep 2  # Wait for 2 seconds
 
+################################### Setup docker containers from Git Hub ########################
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
+
+# Ensure the script is being run from /root
+if [[ $(pwd) != "/root" ]]; then
+    echo -e "\e[33mSwitching to /root directory...\e[0m"
+    cd /root || {
+        echo -e "\e[31mFailed to switch to /root directory. Exiting...\e[0m"
+        exit 1
+    }
+else
+    echo -e "\e[33mAlready in /root directory.\e[0m"
+fi
+
+# Download the docker-compose.yaml file
+echo -e "\e[33mDownloading the docker-compose.yaml file...\e[0m"
+curl -fsSL -o docker-compose.yaml https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/docker-compose.yaml || {
+    echo -e "\e[31mFailed to download docker-compose.yaml. Exiting...\e[0m"
+    exit 1
+}
+
+# Run the docker-compose.yaml file using Docker Compose
+echo -e "\e[33mStarting containers with docker-compose up -d...\e[0m"
+docker compose up -d || {
+    echo -e "\e[31mFailed to run docker-compose.yaml. Exiting...\e[0m"
+    exit 1
+}
+
+echo -e "\e[32mContainers are up and running in detached mode!\e[0m"
+sleep 2  # Wait for 2 seconds
+
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
+
+##############################################
 echo -e "\e[33mSystem setup complete. Tools and users have been created.\e[0m"
 exit 0
