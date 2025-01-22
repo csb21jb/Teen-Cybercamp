@@ -29,9 +29,9 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 echo -e "\e[33mInstalling required tools...\e[0m"
 apt install -y curl sudo
 apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
-sleep 2  # Wait for 2 seconds
+#sleep 2  # Wait for 2 seconds
 
-echo -e "\n\n\n\n"  # Add two blank lines for spacing
+#echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Setup Docker
 echo -e "\e[33mSetting up Docker...\e[0m"
 apt install -y ca-certificates 
