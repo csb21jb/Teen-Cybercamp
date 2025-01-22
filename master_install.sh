@@ -21,7 +21,7 @@ echo 'tzdata tzdata/Zones/America select New_York' | debconf-set-selections
 
 # Install necessary tools
 echo "Installing required tools..."
-apt install -y python3 openssl git nmap wget net-tools build-essential curl vim apt-transport-https ca-certificates curl software-properties-common sudo systemd gnupg lsb-release nano
+apt install -y python3 openssl git nmap wget net-tools build-essential docker-ce curl vim apt-transport-https ca-certificates curl software-properties-common sudo systemd gnupg lsb-release nano
 
 # Setup Docker
 echo "Setting up Docker"
