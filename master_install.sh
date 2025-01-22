@@ -2,14 +2,14 @@
 
 # Ensure the script is being run as root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root!" 
+   echo "\e[1;31mThis script must be run as root!\e[0m" 
    exit 1
 fi
 
-echo "Starting system setup..."
+echo -e "\e[33mStarting system setup...\e[0m"
 
 # Update and upgrade the system
-echo "Updating system packages..."
+echo -e "\e[33mUpdating system packages...\e[0m"
 apt update && apt upgrade -y
 
 # Set the language and timezone
@@ -20,12 +20,12 @@ echo 'tzdata tzdata/Zones/America select New_York' | debconf-set-selections
 
 
 # Install necessary tools
-echo "Installing required tools..."
+echo -e "\e[33mInstalling required tools...\e[0m"
 apt install -y curl sudo
 apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
 
 # Setup Docker
-echo "Setting up Docker"
+echo -e "\e[33mSetting up Docker...\e[0m"
 apt install -y ca-certificates 
 mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -35,18 +35,19 @@ apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker
 
 
 # Configure the "testuser" account
-echo "Creating test user account..."
+echo -e "\e[33mCreating user accounts...\e[0m"
 useradd -m -s /bin/bash testuser
 echo "testuser:testpass123$" | chpasswd
-echo "Test user 'testuser' created with default password." ## DELETE THIS EVENTUALLY
+
+echo -e "\e[33mUser accounts are setup\e[0m"
 
 # Deploy the pdf-parser.py tool to /usr/local/bin
-echo "Downloading and placing pdf-parser.py in /usr/local/bin..."
+echo -e "\e[33mDownloading and placing pdf-parser.py in /usr/local/bin...\e[0m"
 wget -O /usr/local/bin/pdf-parser.py https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
 chmod +x /usr/local/bin/pdf-parser.py
 
 # Simulate log entries in auth.log for testing purposes
-echo "Creating simulated SSH attack log entries..."
+echo -e "\e[33mCreating simulated SSH attack log entries...\e[0m"
 cat <<EOL >> /var/log/auth.log
 Dec 29 07:01:10 server sshd[23456]: Invalid user admin from 89.208.198.12
 Dec 29 07:01:12 server sshd[23456]: Failed password for invalid user admin from 89.208.198.12 port 44562 ssh2
@@ -134,11 +135,11 @@ Dec 29 10:50:30 server sshd[78888]: Failed password for root from 203.0.113.190 
 Dec 29 10:55:15 server sshd[80000]: Invalid user admin from 192.0.2.120
 Dec 29 10:55:17 server sshd[80000]: Failed password for invalid user admin from 192.0.2.120 port 54123 ssh2”
 EOL
-echo "Simulated log entries added to /var/log/auth.log."
+echo -e "\e[33mSimulated log entries added to /var/log/auth.log.\e[0m"
 
 # Final cleanup and checks
-echo "Cleaning up..."
+echo -e "\e[33mCleaning up...\e[0m"
 apt autoremove -y && apt autoclean
 
-echo "System setup complete. Tools and users have been created."
+echo -e "\e[33mSystem setup complete. Tools and users have been created.\e[0m"
 exit 0
