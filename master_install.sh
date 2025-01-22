@@ -340,11 +340,38 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 ##############################################
 
-###################################### update SSH to accept antiquated security ##########################
+###################################### Adjust SSH ##########################
+# Add antiquated formats for metasploitable
 echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
 echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
 echo "Configuration updated successfully in /etc/ssh/ssh_config."
+
+# Add pass
+# Backup the existing SSHD configuration file
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+
+# Add or modify the required settings in sshd_config
+echo "Updating /etc/ssh/sshd_config..."
+sed -i '/^PermitRootLogin /c\PermitRootLogin yes' /etc/ssh/sshd_config
+sed -i '/^PubkeyAuthentication /c\PubkeyAuthentication yes' /etc/ssh/sshd_config
+sed -i '/^PasswordAuthentication /c\PasswordAuthentication yes' /etc/ssh/sshd_config
+sed -i '/^KbdInteractiveAuthentication /c\KbdInteractiveAuthentication yes' /etc/ssh/sshd_config
+sed -i '/^UsePAM /c\UsePAM yes' /etc/ssh/sshd_config
+
+# Ensure the settings are added if they don't already exist
+grep -q "^PermitRootLogin yes" /etc/ssh/sshd_config || echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+grep -q "^PubkeyAuthentication yes" /etc/ssh/sshd_config || echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config
+grep -q "^PasswordAuthentication yes" /etc/ssh/sshd_config || echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+grep -q "^KbdInteractiveAuthentication yes" /etc/ssh/sshd_config || echo "KbdInteractiveAuthentication yes" >> /etc/ssh/sshd_config
+grep -q "^UsePAM yes" /etc/ssh/sshd_config || echo "UsePAM yes" >> /etc/ssh/sshd_config
+
+# Reload the SSH service to apply changes
+echo "Reloading SSH service..."
+systemctl reload sshd
+
+echo "Configuration updated successfully. SSH server is now set up to allow password-based login."
+
 ##########################################################################################################
 
 echo -e "\e[33mSystem setup complete. Tools and users have been created.\e[0m"
