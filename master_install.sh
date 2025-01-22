@@ -7,23 +7,31 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 echo -e "\e[33mStarting system setup...\e[0m"
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Update and upgrade the system
 echo -e "\e[33mUpdating system packages...\e[0m"
 apt update && apt upgrade -y
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Set the language and timezone
 echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections
 echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8' | debconf-set-selections
 echo 'tzdata tzdata/Areas select America' | debconf-set-selections
 echo 'tzdata tzdata/Zones/America select New_York' | debconf-set-selections
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 # Install necessary tools
 echo -e "\e[33mInstalling required tools...\e[0m"
 apt install -y curl sudo
 apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Setup Docker
 echo -e "\e[33mSetting up Docker...\e[0m"
 apt install -y ca-certificates 
@@ -32,20 +40,26 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt update
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 # Configure the "testuser" account
 echo -e "\e[33mCreating user accounts...\e[0m"
 useradd -m -s /bin/bash testuser
 echo "testuser:testpass123$" | chpasswd
-
+       ####put the other accounts here
 echo -e "\e[33mUser accounts are setup\e[0m"
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Deploy the pdf-parser.py tool to /usr/local/bin
 echo -e "\e[33mDownloading and placing pdf-parser.py in /usr/local/bin...\e[0m"
 wget -O /usr/local/bin/pdf-parser.py https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
 chmod +x /usr/local/bin/pdf-parser.py
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Simulate log entries in auth.log for testing purposes
 echo -e "\e[33mCreating simulated SSH attack log entries...\e[0m"
 cat <<EOL >> /var/log/auth.log
@@ -140,6 +154,8 @@ echo -e "\e[33mSimulated log entries added to /var/log/auth.log.\e[0m"
 # Final cleanup and checks
 echo -e "\e[33mCleaning up...\e[0m"
 apt autoremove -y && apt autoclean
+sleep 2  # Wait for 2 seconds
 
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 echo -e "\e[33mSystem setup complete. Tools and users have been created.\e[0m"
 exit 0
