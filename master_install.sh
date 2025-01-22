@@ -30,9 +30,9 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 echo -e "\e[33mInstalling required tools...\e[0m"
 apt install -y curl sudo
 apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
-#sleep 2  # Wait for 2 seconds
+sleep 2  # Wait for 2 seconds
 
-#echo -e "\n\n\n\n"  # Add two blank lines for spacing
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Setup Docker
 echo -e "\e[33mSetting up Docker...\e[0m"
 apt install -y ca-certificates 
@@ -205,12 +205,15 @@ chmod +x /usr/local/bin/pdf-parser.py
 # Append the PATH modification to /etc/profile
 echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
 source /etc/profile
-echo "Updated PATH: $PATH"
+echo -e "\e[33mUpdated PATH: $PATH\e[0m"
 sleep 2  # Wait for 2 seconds
 
+###############################################################################################
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Simulate log entries in auth.log for testing purposes
 echo -e "\e[33mCreating simulated SSH attack log entries...\e[0m"
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
+
 cat <<EOL >> /var/log/auth.log
 Dec 29 07:01:10 server sshd[23456]: Invalid user admin from 89.208.198.12
 Dec 29 07:01:12 server sshd[23456]: Failed password for invalid user admin from 89.208.198.12 port 44562 ssh2
@@ -368,7 +371,7 @@ grep -q "^UsePAM yes" /etc/ssh/sshd_config || echo "UsePAM yes" >> /etc/ssh/sshd
 
 # Reload the SSH service to apply changes
 echo "Reloading SSH service..."
-systemctl reload sshd
+systemctl restart ssh
 
 echo "Configuration updated successfully. SSH server is now set up to allow password-based login."
 
