@@ -301,6 +301,7 @@ Dec 29 10:50:30 server sshd[78888]: Failed password for root from 203.0.113.190 
 Dec 29 10:55:15 server sshd[80000]: Invalid user admin from 192.0.2.120
 Dec 29 10:55:17 server sshd[80000]: Failed password for invalid user admin from 192.0.2.120 port 54123 ssh2”
 EOL
+chmod 755 /var/log/auth.log
 echo -e "\e[33mSimulated log entries added to /var/log/auth.log.\e[0m"
 
 ################################### Final cleanup and checks ###################################
