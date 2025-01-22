@@ -47,7 +47,7 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Configure student accounts
 echo -e "\e[33mCreating student user accounts...\e[0m"
 
-# List of student usernames and passwords
+#################################### Create student usernames and passwords ##############################
 accounts=(
 # Configure the "testuser" account
     "student000:UvEZBZFujl"
@@ -193,6 +193,7 @@ for account in "${accounts[@]}"; do
 done
 
 echo -e "\e[33mAll student user accounts have been created.\e[0m"
+#######################################################################################################
 sleep 2  # Wait for 2 seconds
 
 
@@ -334,5 +335,13 @@ sleep 2  # Wait for 2 seconds
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 ##############################################
+
+###################################### update SSH to accept antiquated security ##########################
+echo "Host 172.18.0.3" >> /etc/ssh/ssh_config
+echo -e "\tHostKeyAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
+echo -e "\tPubkeyAcceptedAlgorithms +ssh-rsa" >> /etc/ssh/ssh_config
+echo "Configuration updated successfully in /etc/ssh/ssh_config."
+##########################################################################################################
+
 echo -e "\e[33mSystem setup complete. Tools and users have been created.\e[0m"
 exit 0
