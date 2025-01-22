@@ -12,6 +12,7 @@ sleep 2  # Wait for 2 seconds
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Update and upgrade the system
 echo -e "\e[33mUpdating system packages...\e[0m"
+DEBIAN_FRONTEND=noninteractive apt install -y openssh-server -o Dpkg::Options::="--force-confnew"
 apt update && apt upgrade -y
 sleep 2  # Wait for 2 seconds
 
