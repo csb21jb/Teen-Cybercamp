@@ -198,10 +198,14 @@ sleep 2  # Wait for 2 seconds
 
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
-# Deploy the pdf-parser.py tool to /usr/local/bin
+############################## Deploy the pdf-parser.py tool to /usr/local/bin #########################
 echo -e "\e[33mDownloading and placing pdf-parser.py in /usr/local/bin...\e[0m"
 wget -O /usr/local/bin/pdf-parser.py https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/pdf-parser.py
 chmod +x /usr/local/bin/pdf-parser.py
+# Append the PATH modification to /etc/profile
+echo 'export PATH="/usr/local/bin:$PATH"' | sudo tee -a /etc/profile
+source /etc/profile
+echo "Updated PATH: $PATH"
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
