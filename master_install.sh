@@ -22,7 +22,7 @@ echo 'tzdata tzdata/Zones/America select New_York' | debconf-set-selections
 # Install necessary tools
 echo "Installing required tools..."
 apt install -y curl sudo
-apt install -y python3 openssl git nmap wget net-tools build-essential docker-ce vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
+apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
 
 # Setup Docker
 echo "Setting up Docker"
@@ -33,7 +33,7 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
-sudo apt install docker-compose-plugin
+sudo apt install docker-compose-plugin docker-ce
 
 
 # Configure the "testuser" account
