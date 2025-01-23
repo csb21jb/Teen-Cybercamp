@@ -39,7 +39,7 @@ echo -e "\e[33mDetecting operating system and setting up Docker repository...\e[
 # Detect OS
 OS=$(lsb_release -is)  # Get the OS name (Ubuntu or Debian)
 DOCKER_REPO=""
-
+# Add a raspbian, centos or fedora below
 if [[ "$OS" == "Ubuntu" ]]; then
     DOCKER_REPO="https://download.docker.com/linux/ubuntu"
 elif [[ "$OS" == "Debian" ]]; then
