@@ -14,14 +14,15 @@ Select a cloud provider of your choice. Some common options include:
 - **AWS (Amazon Web Services)**
 - **Google Cloud Platform**
 
-### **2. Provision a Debian Instance**
-- Choose **Debian** as your operating system.
+### **2. Provision a Debian or Ubuntu Instance**
 - Recommended resources for production:
   - **50 GB Storage**
   - **4 vCPU**
   - **16 GB RAM**
 - Testing Purposes:
   - **2 GB RAM** (suitable for small-scale testing, but performance will degrade with 50+ users on same machine).
+  - **25 GB Storage**
+  - **1 vCPU**
 
 ### **3. Set Machine Name**
 - Name your machine **`Cyber Bootcamp`** during the setup process.
