@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ensure the script is being run as root
+#################################################### Ensure the script is being run as root ############
 if [[ $EUID -ne 0 ]]; then
    echo "\e[1;31mThis script must be run as root!\e[0m" 
    exit 1
@@ -10,14 +10,13 @@ echo -e "\e[33mStarting system setup...\e[0m"
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
-# Update and upgrade the system
+###################################################### Update and upgrade the system ####################
 echo -e "\e[33mUpdating system packages...\e[0m"
-DEBIAN_FRONTEND=noninteractive apt install -y openssh-server -o Dpkg::Options::="--force-confnew"
 apt update && apt upgrade -y
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
-# Set the language and timezone
+###################################################### Set the language and timezone #####################
 echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections
 echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8' | debconf-set-selections
 echo 'tzdata tzdata/Areas select America' | debconf-set-selections
@@ -26,30 +25,53 @@ sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
-# Install necessary tools
+####################################################### Install necessary tools ##########################
 echo -e "\e[33mInstalling required tools...\e[0m"
-for tool in python3 curl sudo openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano debconf-utils; do apt install -y "$tool" && sleep 1; done
+for tool in python3 curl sudo openssl git nmap wget net-tools openssh-server build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano debconf-utils; do apt install -y "$tool" && sleep 1; done
 
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
-# Setup Docker
-echo -e "\e[33mSetting up Docker...\e[0m"
+
+######################################################## Setup Docker ######################################
+echo -e "\e[33mDetecting operating system and setting up Docker repository...\e[0m"
+
+# Detect OS
+OS=$(lsb_release -is)  # Get the OS name (Ubuntu or Debian)
+DOCKER_REPO=""
+
+if [[ "$OS" == "Ubuntu" ]]; then
+    DOCKER_REPO="https://download.docker.com/linux/ubuntu"
+elif [[ "$OS" == "Debian" ]]; then
+    DOCKER_REPO="https://download.docker.com/linux/debian"
+else
+    echo -e "\e[31mUnsupported OS: $OS. Exiting...\e[0m"
+    exit 1
+fi
+
+# Configure Docker repository
 mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+curl -fsSL $DOCKER_REPO/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] $DOCKER_REPO $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker
+echo -e "\e[33mInstalling Docker...\e[0m"
 apt update
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 # Ensure Docker service is running
+echo -e "\e[33mEnabling and starting Docker service...\e[0m"
 systemctl enable docker
 systemctl start docker
 sleep 2  # Wait for 2 seconds
+
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Configure student accounts
 
 
 #################################### Create student usernames and passwords ##############################
+
 echo -e "\e[33mCreating student user accounts...\e[0m"
 accounts=(
 # Configure the "testuser" account
