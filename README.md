@@ -4,7 +4,6 @@
 
 Welcome to the **Cyber Bootcamp** deployment guide! This project provides a robust environment for teaching cybersecurity concepts and running Capture The Flag (CTF) challenges in a virtualized environment. Below is a step-by-step guide to set up your Cyber Bootcamp server, including all necessary prerequisites and configurations.
 
----
 
 ## **Prerequisites**
 
@@ -35,7 +34,6 @@ To enable communication and access for CTF challenges and lesson environments, o
 - **8091**: For monitoring or additional tools.
 - **4000-4999**: Wide range for peer-to-peer activities (e.g., `netcat` exercises).
 
----
 
 ## **Installation Steps**
 
@@ -57,7 +55,6 @@ wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/ma
   - **Keep the local version installed** by ensuring it is highlighted and pressing `Tab` to select **OK**.
 - This allows the script to make additional updates to the SSH configuration later.
 
----
 
 ## **Post-Installation**
 
@@ -78,7 +75,6 @@ Ensure all services and containers are running:
 docker ps
 ```
 
----
 
 ## **Customization**
 
@@ -91,7 +87,6 @@ The installation script is designed to be flexible:
 - For classrooms with more than 50 students, ensure at least **16 GB RAM** to prevent performance degradation.
 - If running on lower specs (e.g., 2 GB RAM), performance will be limited to small-scale testing.
 
----
 
 ## **Support**
 If you encounter issues or need further assistance, check the following:
@@ -103,17 +98,14 @@ If you encounter issues or need further assistance, check the following:
 
 Feel free to contribute to the project or reach out to the community for additional support.
 
----
 
 ## **Future Enhancements**
 The current setup is designed for flexibility and scalability. Future updates will include:
 - Enhanced SSH configuration for secure and efficient management.
 - Additional lesson modules and CTF challenges preconfigured in the environment.
 
----
 
 Deploy your **Cyber Bootcamp** today and create an engaging and hands-on cybersecurity learning environment! 🚀
 
---- 
 
 Let me know if you'd like to add anything specific!
