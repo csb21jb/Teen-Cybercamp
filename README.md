@@ -15,7 +15,7 @@ Select a cloud provider of your choice. Some common options include:
 - **AWS (Amazon Web Services)**
 - **Google Cloud Platform**
 
-### **2. Provision a Debian or Ubuntu Instance**
+### **2. Provision a Debian Instance**
 - Recommended resources for production:
   - **50 GB Storage**
   - **4 vCPU**
