@@ -34,41 +34,19 @@ sleep 2  # Wait for 2 seconds
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 ######################################################## Setup Docker ######################################
-echo -e "\e[33mDetecting operating system and setting up Docker repository...\e[0m"
-
-# Detect OS
-OS=$(lsb_release -is)  # Get the OS name (Ubuntu or Debian)
-DOCKER_REPO=""
-# Add a raspbian, centos or fedora below
-if [[ "$OS" == "Ubuntu" ]]; then
-    DOCKER_REPO="https://download.docker.com/linux/ubuntu"
-elif [[ "$OS" == "Debian" ]]; then
-    DOCKER_REPO="https://download.docker.com/linux/debian"
-else
-    echo -e "\e[31mUnsupported OS: $OS. Exiting...\e[0m"
-    exit 1
-fi
-
-# Configure Docker repository
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
+echo -e "\e[33mSetting up Docker...\e[0m"
 mkdir -p /etc/apt/keyrings
-curl -fsSL $DOCKER_REPO/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] $DOCKER_REPO $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Docker
-echo -e "\e[33mInstalling Docker...\e[0m"
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt update
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
 # Ensure Docker service is running
-echo -e "\e[33mEnabling and starting Docker service...\e[0m"
 systemctl enable docker
 systemctl start docker
 sleep 2  # Wait for 2 seconds
 
-
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
-# Configure student accounts
-
 
 #################################### Create student usernames and passwords ##############################
 
