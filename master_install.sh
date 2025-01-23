@@ -28,8 +28,8 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 # Install necessary tools
 echo -e "\e[33mInstalling required tools...\e[0m"
-apt install -y curl sudo
-apt install -y python3 openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano
+apt install -y python3 curl sudo openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano ebconf-utils curl gnupg
+
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
@@ -41,13 +41,17 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt update
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# Ensure Docker service is running
+systemctl enable docker
+systemctl start docker
 sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 # Configure student accounts
-echo -e "\e[33mCreating student user accounts...\e[0m"
+
 
 #################################### Create student usernames and passwords ##############################
+echo -e "\e[33mCreating student user accounts...\e[0m"
 accounts=(
 # Configure the "testuser" account
     "student000:UvEZBZFujl"
