@@ -65,11 +65,19 @@ If there are any issues with the Docker containers, you can manually manage them
    ```bash
    cd /root
    ```
-2. Run the following commands to restart Docker containers:
+2. Run the following commands to restart Docker containers (This removes the container so anything you save will be deleted):
    ```bash
    docker compose down && docker compose up -d
    ```
-
+3. Run to Start the container
+   ```bash
+   docker compose up -d
+   ```
+4. Run to Stop the container
+   ```bash
+   docker compose down
+   ```
+   
 ### **2. Verify Services**
 Ensure all services and containers are running:
 ```bash
@@ -81,7 +89,7 @@ docker ps
 
 ### **1. Script Customization**
 The installation script is designed to be flexible:
-- Modify the script to deploy additional Docker containers or services.
+- Modify the yaml script to deploy additional Docker containers or services.
 - Adjust configurations for your specific classroom or CTF needs.
 
 ### **2. Scaling**
