@@ -28,7 +28,7 @@ echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
 # Install necessary tools
 echo -e "\e[33mInstalling required tools...\e[0m"
-apt install -y python3 curl sudo openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano debconf-utils curl gnupg
+for tool in python3 curl sudo openssl git nmap wget net-tools build-essential vim apt-transport-https ca-certificates software-properties-common systemd gnupg lsb-release nano debconf-utils; do apt install -y "$tool" && sleep 1; done
 
 sleep 2  # Wait for 2 seconds
 
