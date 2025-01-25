@@ -62,10 +62,8 @@ wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/ma
 
 ### **1. Check Docker Containers**
 If there are any issues with the Docker containers, you can manually manage them using the following commands:
-1. Navigate to the root home directory:
-   ```bash
-   cd /root
-   ```
+1. Navigate to the directory where you ran the installation script:
+  
 2. Run the following commands to restart Docker containers (This removes the container so anything you save will be deleted):
    ```bash
    docker compose down && docker compose up -d
@@ -84,7 +82,10 @@ Ensure all services and containers are running:
 ```bash
 docker ps
 ```
-
+IP addesses for the machines:
+- Juicebox (172.18.0.2) - Web vulnerability cyber range
+- Metasploitable2 (172.18.0.3) - Cyber range with multiple vulnerabilities
+- Capture The Flag (172.18.0.4) - CTF that focuses on common system admin mistakes. 
 
 ## **Customization**
 
