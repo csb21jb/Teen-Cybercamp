@@ -6,9 +6,12 @@ Welcome to the **Cyber Bootcamp** deployment guide! This project provides a robu
 
 This Cyber Range provides an immersive and dynamic environment featuring Juice Shop for practicing web vulnerabilities like SQL Injection and XSS, Metasploitable with a multitude of exploitable services, and custom Capture the Flag (CTF) challenges simulating real-world scenarios. This range empowers participants with hands-on experience using tools like Metasploit, Burp Suite, and Wireshark, allowing them to practice offensive and defensive security techniques in a realistic, isolated playground tailored for cybersecurity learning.
 
-##**What Does The Automation Script Do For You?**
+## **What Does The Automation Script Do?**
 
-### **1. 
+1. Installs all neccesary tools (netcat, nmap, python3, nano, etc)
+2. Automates the installation and setup of Docker containers and a custom yaml file for easy container setup and teardown (Juice Shop, Metasploitable2, a Custom CTF)
+3. Automates the setup or over 100 usernames and passwords for student use of a linux system to SSH into.
+4. Creates fake logs on the system to enable tool creation to parse through logs
 
 
 ## **Prerequisites**
