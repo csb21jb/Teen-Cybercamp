@@ -40,7 +40,7 @@ To enable communication and access for CTF challenges and lesson environments, o
 ## **Installation Steps**
 
 ### **1. Update and Install Basic Tools**
-This install script is designed for either Ubuntu or Debian. Note: Ubunut let the docker containers to utlize all of your resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. Log in as the root user:
+This install script is designed for either Ubuntu or Debian. Note: Ubunut let the docker containers to utlize all of your resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. It will ask you about updating the openssh server, you can either keep the exsisting or install the new one. The script will modify the config file. Log in as the root user:
 ```bash
 apt update && apt upgrade -y && apt install wget -y
 ```
