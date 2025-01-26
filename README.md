@@ -6,6 +6,11 @@ Welcome to the **Cyber Bootcamp** deployment guide! This project provides a robu
 
 This Cyber Range provides an immersive and dynamic environment featuring Juice Shop for practicing web vulnerabilities like SQL Injection and XSS, Metasploitable with a multitude of exploitable services, and custom Capture the Flag (CTF) challenges simulating real-world scenarios. This range empowers participants with hands-on experience using tools like Metasploit, Burp Suite, and Wireshark, allowing them to practice offensive and defensive security techniques in a realistic, isolated playground tailored for cybersecurity learning.
 
+##**What Does The Automation Script Do For You?**
+
+### **1. 
+
+
 ## **Prerequisites**
 
 ### **1. Choose Your Cloud Platform**
