@@ -12,6 +12,7 @@ This Cyber Range provides an immersive and dynamic environment featuring Juice S
 2. Automates the installation and setup of Docker containers and a custom yaml file for easy container setup and teardown (Juice Shop, Metasploitable2, a Custom CTF)
 3. Automates the setup or over 100 usernames and passwords for student use of a linux system to SSH into.
 4. Creates fake logs on the system to enable tool creation to parse through logs.
+5. **NOTE: There are credentials written directly into the setup script which is insecure. This is the easiest method in setting up multiple users and is meant to be setup and burned down, so use at your own risk**
 
 
 ## **Prerequisites**
