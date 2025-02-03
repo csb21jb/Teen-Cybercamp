@@ -31,8 +31,8 @@ services:
         ipv4_address: 172.18.0.4
     restart: always
     volumes:
-      - ./ctf.sh:/root/.ctf.sh
-    command: /bin/bash -c "chmod +x /root/.ctf.sh && /root/.ctf.sh && tail -f /dev/null"
+      - ./ctf_install.sh:/root/.ctf_install.sh
+    command: /bin/bash -c "chmod +x /root/.ctf_install.sh && /root/.ctf_install.sh && tail -f /dev/null"
 
 #  ubuntu-ctf:
 #    image: shawn102602/ctf
