@@ -33,6 +33,12 @@ sleep 2  # Wait for 2 seconds
 
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 
+####################################################### Download the CTF Install Script ##########################
+sleep 2  # Wait for 2 seconds
+
+echo -e "\n\n\n\n"  # Add two blank lines for spacing
+wget https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/ctf_install.sh
+
 ######################################################## Setup Docker ######################################
 echo -e "\n\n\n\n"  # Add two blank lines for spacing
 echo -e "\e[33mSetting up Docker...\e[0m"
