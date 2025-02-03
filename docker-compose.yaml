@@ -21,7 +21,7 @@ services:
     restart: always
     command: /bin/bash -c "/bin/services.sh && tail -f /dev/null"
 
- ubuntu-ctf: # Testing Purposes
+  ubuntu-ctf: # Testing Purposes
     image: ubuntu:latest
     container_name: ctf
     ports:
