@@ -21,16 +21,29 @@ services:
     restart: always
     command: /bin/bash -c "/bin/services.sh && tail -f /dev/null"
 
-  ubuntu-ctf:
-    image: shawn102602/ctf
+ ubuntu-ctf: # Testing Purposes
+    image: ubuntu:latest
     container_name: ctf
     ports:
-      - "8091:80" # Map internal port 80 to external port 8091
+      - "8091:80"
     networks:
       custom-bridge:
         ipv4_address: 172.18.0.4
     restart: always
+    volumes:
+      - ./ctf.sh:/root/.ctf.sh
     command: /bin/bash -c "chmod +x /root/.ctf.sh && /root/.ctf.sh && tail -f /dev/null"
+
+#  ubuntu-ctf:
+#    image: shawn102602/ctf
+#    container_name: ctf
+#    ports:
+#      - "8091:80" # Map internal port 80 to external port 8091
+#    networks:
+#      custom-bridge:
+#        ipv4_address: 172.18.0.4
+#    restart: always
+#    command: /bin/bash -c "chmod +x /root/.ctf.sh && /root/.ctf.sh && tail -f /dev/null"
 
 networks:
   custom-bridge:
