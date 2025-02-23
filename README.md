@@ -34,10 +34,7 @@ Select a cloud provider of your choice. Some common options include:
   - **25 GB Storage**
   - **1 vCPU**
 
-### **3. Set Machine Name**
-- Name your machine **`Cyber Bootcamp`** during the setup process.
-
-### **4. Open Required Ports**
+### **3. Open Required Ports**
 To enable communication and access for CTF challenges and lesson environments, open the following ports in your cloud provider's firewall:
 - **8080**: Used for web-based services.
 - **8180**: Reserved for application access.
@@ -49,7 +46,7 @@ To enable communication and access for CTF challenges and lesson environments, o
 ## **Installation Steps**
 
 ### **1. Update and Install Basic Tools**
-This install script is designed for either Ubuntu or Debian. Note: Ubuntu as of right now is letting the docker containers utlize all of the resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. It will ask you about updating the openssh server, you can either keep the exsisting or install the new one. The script will modify the config file. Log in as the root user:
+This install script is designed for either Ubuntu or Debian. Note: Ubuntu as of right now is letting the docker containers utlize all of the resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. Log in as the root user:
 ```bash
 apt update && apt upgrade -y && apt install wget -y
 ```
@@ -73,7 +70,7 @@ wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/ma
 If there are any issues with the Docker containers, you can manually manage them using the following commands:
 1. Navigate to the directory where you ran the installation script:
   
-2. Run the following commands to restart Docker containers (This removes the container so anything you save will be deleted):
+2. Run the following commands where you ran the script to restart Docker containers (This removes the container so anything you save will be deleted):
    ```bash
    docker compose down && docker compose up -d
    ```
@@ -98,10 +95,15 @@ IP addesses for the machines:
 
 ## **Customization**
 
+### **NOTE** 
+There are hard coded credentials in the script, so either remove them or change upon installation. There are over 100 users. 
+
 ### **1. Script Customization**
 The installation script is designed to be flexible:
 - Modify the yaml script to deploy additional Docker containers or services.
 - Adjust configurations for your specific classroom or CTF needs.
+
+
 
 ### **2. Scaling**
 - For classrooms with more than 50 students, ensure at least **16 GB RAM** to prevent performance degradation.
@@ -122,6 +124,7 @@ Feel free to contribute to the project or reach out to the community for additio
 ## **Future Enhancements**
 The current setup is designed for flexibility and scalability. Future updates will include:
 - Enhanced SSH configuration for secure and efficient management.
+- Remove hard coded credentials 
 - Additional lesson modules and CTF challenges preconfigured in the environment.
 
 
