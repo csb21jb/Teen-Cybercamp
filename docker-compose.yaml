@@ -34,17 +34,6 @@ services:
       - ./ctf_install.sh:/root/.ctf_install.sh
     command: /bin/bash -c "chmod +x /root/.ctf_install.sh && /root/.ctf_install.sh && tail -f /dev/null"
 
-#  ubuntu-ctf:
-#    image: shawn102602/ctf
-#    container_name: ctf
-#    ports:
-#      - "8091:80" # Map internal port 80 to external port 8091
-#    networks:
-#      custom-bridge:
-#        ipv4_address: 172.18.0.4
-#    restart: always
-#    command: /bin/bash -c "chmod +x /root/.ctf.sh && /root/.ctf.sh && tail -f /dev/null"
-
 networks:
   custom-bridge:
     driver: bridge
