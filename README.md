@@ -57,9 +57,8 @@ Use `wget` to download and execute the installation script. You can also just gi
 wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/master_install.sh | bash
 ```
 
-### **NOTE** 
+# **NOTE** 
 There are hard coded credentials in the script, so either remove them or change upon installation. There are over 100 users. 
-
 
 ### **3. OpenSSH Server Configuration During Installation**
 - During the script execution, you may encounter a prompt for the **OpenSSH Server** configuration.
