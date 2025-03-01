@@ -48,7 +48,7 @@ To enable communication and access for CTF challenges and lesson environments, o
 ### **1. Update and Install Basic Tools**
 This install script is designed for either Ubuntu or Debian. Note: Ubuntu as of right now is letting the docker containers utlize all of the resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. Log in as the root user:
 ```bash
-apt update && apt upgrade -y && apt install wget -y
+sudo apt update && apt upgrade -y && apt install wget -y
 ```
 
 ### **2. Run the Cyber Bootcamp Installation Script**
