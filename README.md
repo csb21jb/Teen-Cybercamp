@@ -4,6 +4,8 @@
 
 Welcome to the **Cyber Bootcamp** deployment guide! This project provides a robust environment for teaching cybersecurity concepts and running Capture The Flag (CTF) challenges in a virtualized environment. Below is a step-by-step guide to set up your Cyber Bootcamp server, including all necessary prerequisites and configurations.
 
+Utilize the Cybersecurity Training PDF located in this repository as a resource for self-directed learning. All necessary materials are self-contained within the Docker containers provided. The Capture The Flag (CTF) challenge encompasses all the lessons outlined in the training. To successfully complete the CTF, you either need to review the underlying code (as a form of 'cheating') or thoroughly complete the training modules. Enjoy your learning experience!
+
 This Cyber Range provides an immersive and dynamic environment featuring Juice Shop for practicing web vulnerabilities like SQL Injection and XSS, Metasploitable with a multitude of exploitable services, and custom Capture the Flag (CTF) challenges simulating real-world scenarios. This range empowers participants with hands-on experience using tools like Metasploit, Burp Suite, and Wireshark, allowing them to practice offensive and defensive security techniques in a realistic, isolated playground tailored for cybersecurity learning.
 
 ## **What Does The Automation Script Do?**
