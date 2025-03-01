@@ -54,7 +54,7 @@ apt update && apt upgrade -y && apt install wget -y
 ### **2. Run the Cyber Bootcamp Installation Script**
 Use `wget` to download and execute the installation script. You can also just git clone this project, but the below script is meant for the github challenged. 
 ```bash
-wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/master_install.sh | bash
+sudo wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/master_install.sh | bash
 ```
 
 # **NOTE** 
