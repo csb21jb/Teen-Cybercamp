@@ -333,6 +333,8 @@ else
     echo -e "\e[33mAlready in /root directory.\e[0m"
 fi
 
+sleep 2  # Wait for 2 seconds
+
 # Download the docker-compose.yaml file
 echo -e "\e[33mDownloading the docker-compose.yaml file...\e[0m"
 curl -fsSL -o docker-compose.yaml https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/docker-compose.yaml || {
@@ -340,6 +342,7 @@ curl -fsSL -o docker-compose.yaml https://raw.githubusercontent.com/csb21jb/Teen
     exit 1
 }
 
+sleep 2  # Wait for 2 seconds
 # Run the docker-compose.yaml file using Docker Compose
 echo -e "\e[33mStarting containers with docker-compose up -d...\e[0m"
 docker compose up -d || {
