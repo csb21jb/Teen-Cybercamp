@@ -48,13 +48,13 @@ To enable communication and access for CTF challenges and lesson environments, o
 ### **1. Update and Install Basic Tools**
 This install script is designed for either Ubuntu or Debian. Note: Ubuntu as of right now is letting the docker containers utlize all of the resources so you will have to manually limit the docker containers to not hog up your system resources - recommend using Debian. Log in as the root user:
 ```bash
-sudo apt update && apt upgrade -y && apt install wget -y
+apt update && apt upgrade -y && apt install wget -y
 ```
 
 ### **2. Run the Cyber Bootcamp Installation Script**
 Use `wget` to download and execute the installation script. You can also just git clone this project, but the below script is meant for the github challenged. 
 ```bash
-sudo wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/master_install.sh | bash
+wget -qO- https://raw.githubusercontent.com/csb21jb/Teen-Cybercamp/refs/heads/main/master_install.sh | bash
 ```
 
 # **NOTE** 
